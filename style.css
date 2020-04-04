@@ -1,0 +1,166 @@
+textarea {
+  padding: 0;
+}
+
+html {
+  overflow: hidden;
+}
+
+body {
+  background: linear-gradient(45deg, #333333, #5a5454);
+  font-size: 16px;
+}
+
+main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  max-width: 1020px;
+  margin: 70px auto;
+  /* perspective: 1000px; */
+}
+
+main #for-screen {
+  font-family: 'SourceSansProLight', sans-serif;
+  /* transform: translateX(15px) translateY(15px) rotateX(0deg) rotateY(-23deg)
+      rotateZ(9deg); */
+}
+
+main #for-screen .screen {
+  padding: 8px 20px 8px 20px;
+  resize: none;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.1);
+  -webkit-box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  color: #ffffff;
+  font-size: 1.2rem;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+main #for-screen .screen::-webkit-input-placeholder {
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+  opacity: 1;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  color: #2196f3;
+}
+
+main #for-screen .screen:focus::-webkit-input-placeholder {
+  -webkit-transform: translateY(35px);
+          transform: translateY(35px);
+  opacity: 0;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+main #for-keyboard {
+  margin-top: 100px;
+  /* transform: translateX(15px) translateY(15px) rotateX(60deg) rotateY(10deg)
+      rotateZ(-20deg); */
+  font-family: 'SourceSansProRegular', sans-serif;
+}
+
+main #for-keyboard .keyboard {
+  padding: 2px;
+  background-color: lightblue;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.1);
+  -webkit-box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  font-size: 1.2rem;
+}
+
+main #for-keyboard .keyboard .keyboard__row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-display: column;
+}
+
+main #for-keyboard .keyboard .keyboard__row .key-default {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 50px;
+  height: 50px;
+  margin: 2px;
+  border-radius: 2px;
+  color: #2196f3;
+  background-color: rgba(0, 0, 0, 0.5);
+  -webkit-transition: all 0.1s ease;
+  transition: all 0.1s ease;
+}
+
+main #for-keyboard .keyboard .keyboard__row .key-default:hover {
+  cursor: pointer;
+  background-color: #2196f3;
+  color: #ffffff;
+  -webkit-transition: all 0.1s ease;
+  transition: all 0.1s ease;
+}
+
+main #for-keyboard .keyboard .keyboard__row .key-default:active {
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
+  -webkit-transition: all 0.1s ease;
+  transition: all 0.1s ease;
+}
+
+main #for-keyboard .keyboard .keyboard__row .key-backspace {
+  width: 100px;
+}
+
+main #for-keyboard .keyboard .keyboard__row .key-tab {
+  width: 77px;
+}
+
+main #for-keyboard .keyboard .keyboard__row .key-del {
+  width: 73px;
+}
+
+main #for-keyboard .keyboard .keyboard__row .key-enter {
+  width: 154px;
+}
+
+main #for-keyboard .keyboard .keyboard__row .key-caps {
+  width: 104px;
+}
+
+main #for-keyboard .keyboard .keyboard__row .key-l-shift {
+  width: 131px;
+}
+
+main #for-keyboard .keyboard .keyboard__row .key-r-shift {
+  width: 127px;
+}
+
+main #for-keyboard .keyboard .keyboard__row .key-space {
+  width: 293px;
+}
+
+main #for-keyboard .keyboard .keyboard__row .key-context {
+  width: 72px;
+}
+/*# sourceMappingURL=style.css.map */
