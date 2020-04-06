@@ -26,55 +26,207 @@ document.addEventListener('DOMContentLoaded', function () {
   function initKeyboard() {
     const keyboard = document.querySelector('.keyboard');
     let key = '';
-    let keys = 51;
+    let keys = 66;
     for (let i = 0; i <= keys; i++) {
-      /*       if (i == 0) {
+      if (i == 0) {
         key += '<div class="key-default key-esc"></div>';
-      } */
-      key += '<div class="key-default"></div>';
+      }
+      if (i == 1) {
+        key += '<div class="key-default key-backquote"></div>';
+      }
+      if (i == 2) {
+        key += '<div class="key-default key-dig1"></div>';
+      }
+      if (i == 3) {
+        key += '<div class="key-default key-dig2"></div>';
+      }
+      if (i == 4) {
+        key += '<div class="key-default key-dig3"></div>';
+      }
+      if (i == 5) {
+        key += '<div class="key-default key-dig4"></div>';
+      }
+      if (i == 6) {
+        key += '<div class="key-default key-dig5"></div>';
+      }
+      if (i == 7) {
+        key += '<div class="key-default key-dig6"></div>';
+      }
+      if (i == 8) {
+        key += '<div class="key-default key-dig7"></div>';
+      }
+      if (i == 9) {
+        key += '<div class="key-default key-dig8"></div>';
+      }
+      if (i == 10) {
+        key += '<div class="key-default key-dig9"></div>';
+      }
+      if (i == 11) {
+        key += '<div class="key-default key-dig0"></div>';
+      }
+      if (i == 12) {
+        key += '<div class="key-default key-minus"></div>';
+      }
       if (i == 13) {
+        key += '<div class="key-default key-equal"></div>';
+      }
+      if (i == 14) {
         key += '<div class="key-default key-backspace"></div>';
       }
-      if (i == 13) {
+      if (i == 15) {
         key += '<div class="key-default key-tab"></div>';
       }
+      if (i == 16) {
+        key += '<div class="key-default key-q"></div>';
+      }
+      if (i == 17) {
+        key += '<div class="key-default key-w"></div>';
+      }
+      if (i == 18) {
+        key += '<div class="key-default key-e"></div>';
+      }
+      if (i == 19) {
+        key += '<div class="key-default key-r"></div>';
+      }
+      if (i == 20) {
+        key += '<div class="key-default key-t"></div>';
+      }
+      if (i == 21) {
+        key += '<div class="key-default key-y"></div>';
+      }
+      if (i == 22) {
+        key += '<div class="key-default key-u"></div>';
+      }
+      if (i == 23) {
+        key += '<div class="key-default key-i"></div>';
+      }
+      if (i == 24) {
+        key += '<div class="key-default key-o"></div>';
+      }
+      if (i == 25) {
+        key += '<div class="key-default key-p"></div>';
+      }
       if (i == 26) {
+        key += '<div class="key-default key-b-left"></div>';
+      }
+      if (i == 27) {
+        key += '<div class="key-default key-b-right"></div>';
+      }
+      if (i == 28) {
+        key += '<div class="key-default key-backslash"></div>';
+      }
+      if (i == 29) {
         key += '<div class="key-default key-del"></div>';
       }
-      if (i == 26) {
+      if (i == 30) {
         key += '<div class="key-default key-caps"></div>';
       }
+      if (i == 31) {
+        key += '<div class="key-default key-a"></div>';
+      }
+      if (i == 32) {
+        key += '<div class="key-default key-s"></div>';
+      }
+      if (i == 33) {
+        key += '<div class="key-default key-d"></div>';
+      }
+      if (i == 34) {
+        key += '<div class="key-default key-f"></div>';
+      }
+      if (i == 35) {
+        key += '<div class="key-default key-g"></div>';
+      }
+      if (i == 36) {
+        key += '<div class="key-default key-h"></div>';
+      }
       if (i == 37) {
+        key += '<div class="key-default key-j"></div>';
+      }
+      if (i == 38) {
+        key += '<div class="key-default key-k"></div>';
+      }
+      if (i == 39) {
+        key += '<div class="key-default key-l"></div>';
+      }
+      if (i == 40) {
+        key += '<div class="key-default key-semicolon"></div>';
+      }
+      if (i == 41) {
+        key += '<div class="key-default key-quote"></div>';
+      }
+      if (i == 42) {
         key += '<div class="key-default key-enter"></div>';
       }
-      if (i == 37) {
+      if (i == 43) {
         key += '<div class="key-default key-l-shift"></div>';
       }
-      if (i == 48) {
-        key += '<div class="key-default key-r-shift"></div>';
+      if (i == 44) {
+        key += '<div class="key-default key-z"></div>';
+      }
+      if (i == 45) {
+        key += '<div class="key-default key-x"></div>';
+      }
+      if (i == 46) {
+        key += '<div class="key-default key-c"></div>';
+      }
+      if (i == 47) {
+        key += '<div class="key-default key-v"></div>';
       }
       if (i == 48) {
-        key += '<div class="key-default key-l-func"></div>';
+        key += '<div class="key-default key-b"></div>';
       }
-      if (i == 48) {
-        key += '<div class="key-default key-l-ctrl"></div>';
+      if (i == 49) {
+        key += '<div class="key-default key-n"></div>';
       }
-      if (i == 48) {
-        key += '<div class="key-default key-win"></div>';
-      }
-      if (i == 48) {
-        key += ' <div class="key-default key-l-alt"></div>';
-      }
-      if (i == 48) {
-        key += '<div class="key-default key-space"></div>';
-      }
-      if (i == 48) {
-        key += '<div class="key-default key-r-alt"></div>';
-      }
-      if (i == 48) {
-        key += '<div class="key-default key-r-ctrl"></div>';
+      if (i == 50) {
+        key += '<div class="key-default key-m"></div>';
       }
       if (i == 51) {
+        key += '<div class="key-default key-comma"></div>';
+      }
+      if (i == 52) {
+        key += '<div class="key-default key-period"></div>';
+      }
+      if (i == 53) {
+        key += '<div class="key-default key-slash"></div>';
+      }
+      if (i == 54) {
+        key += '<div class="key-default key-arrow-up"></div>';
+      }
+      if (i == 55) {
+        key += '<div class="key-default key-r-shift"></div>';
+      }
+      if (i == 56) {
+        key += '<div class="key-default key-func"></div>';
+      }
+      if (i == 57) {
+        key += '<div class="key-default key-l-ctrl"></div>';
+      }
+      if (i == 58) {
+        key += '<div class="key-default key-win"></div>';
+      }
+      if (i == 59) {
+        key += '<div class="key-default key-l-alt"></div>';
+      }
+      if (i == 60) {
+        key += '<div class="key-default key-space"></div>';
+      }
+      if (i == 61) {
+        key += '<div class="key-default key-r-alt"></div>';
+      }
+      if (i == 62) {
+        key += '<div class="key-default key-r-ctrl"></div>';
+      }
+      if (i == 63) {
+        key += '<div class="key-default key-arrow-l"></div>';
+      }
+      if (i == 64) {
+        key += '<div class="key-default key-arrow-d"></div>';
+      }
+      if (i == 65) {
+        key += '<div class="key-default key-arrow-r"></div>';
+      }
+      if (i == 66) {
         key += '<div class="key-default key-r-func"></div>';
       }
     }
@@ -474,18 +626,41 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }); */
 
-  document.addEventListener('keydown', (e) => {
+  /*   document.addEventListener('keydown', (e) => {
+    codeKeyboard.forEach((elk) =>
+      virtualKeyboardKeys.forEach((elv) => {
+        if (e.code === elk) {
+          console.log('work');
+          elv.classList.add('key-active');
+          let symbol = elv.textContent;
+          text += symbol;
+          virtualScreen.textContent = text;
+
+          document.addEventListener('keyup', (e) => {
+            elv.classList.remove('key-active');
+          });
+        }
+      })
+    );
+  }); */
+
+  /*   document.addEventListener('keydown', (e) => {
     for (let i = 0; i <= codeKeyboard.length; i++) {
       for (let j = 0; j <= virtualKeyboardKeys.length; j++) {
         if (e.code === codeKeyboard[i]) {
           console.log('work');
-          let symbol = virtualKeyboardKeys[j].textContent;
+          virtualKeyboardKeys[i].classList.add('key-active');
+          let symbol = virtualKeyboardKeys[i].textContent;
           text += symbol;
           virtualScreen.textContent = text;
+
+          document.addEventListener('keyup', (e) => {
+            virtualKeyboardKeys[i].classList.remove('key-active');
+          });
         }
       }
     }
-  });
+  }); */
 
   /*  Change Language */
 
@@ -575,9 +750,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
   /* Print  */
 
-  /* Keys*/
-
   let text = '';
+
+  /* Keys*/
 
   document.addEventListener('keydown', (e) => {
     if (
@@ -623,14 +798,43 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
+  document.addEventListener('keydown', (e) => {
+    if (e.code === 'AltLeft') {
+      document.querySelector('.key-l-alt').classList.add('key-active');
+      text += document.querySelector('.key-l-alt').textContent;
+      virtualScreen.textContent = text;
+    }
+    if (e.code === 'AltRight') {
+      document.querySelector('.key-r-alt').classList.add('key-active');
+      text += document.querySelector('.key-r-alt').textContent;
+      virtualScreen.textContent = text;
+    }
+
+    document.addEventListener('keyup', (e) => {
+      document.querySelector('.key-l-alt').classList.remove('key-active');
+      document.querySelector('.key-r-alt').classList.remove('key-active');
+    });
+  });
+
   /* Mouse */
 
   virtualKeyboard.addEventListener('mousedown', (e) => {
-    if (e.target.className === 'key-default') {
+    if (
+      e.target.classList.contains('key-default') &&
+      !e.target.classList.contains('key-backspace') &&
+      !e.target.classList.contains('key-del') &&
+      !e.target.classList.contains('key-caps') &&
+      !e.target.classList.contains('key-enter') &&
+      !e.target.classList.contains('key-l-shift') &&
+      !e.target.classList.contains('key-r-shift') &&
+      !e.target.classList.contains('key-func') &&
+      !e.target.classList.contains('key-l-ctrl') &&
+      !e.target.classList.contains('key-space') &&
+      !e.target.classList.contains('key-r-ctrl') &&
+      !e.target.classList.contains('key-r-func')
+    ) {
       text += e.target.textContent;
       virtualScreen.textContent = text;
-    } else if (e.target.classList.contains('key-win')) {
-      e.preventDefault();
     } else if (e.target.classList.contains('key-enter')) {
       text += '\n';
       virtualScreen.textContent = text;
@@ -705,6 +909,14 @@ document.addEventListener('DOMContentLoaded', function () {
       renderSymbols(langKeyboard);
     }
   });
+
+  /*   const keyEsc = document.querySelector('.key-default');
+  console.log(keyEsc);
+  keyEsc.addEventListener('mousedown', (e) => {
+    if (e.target === keyEsc) {
+      virtualScreen.textContent = '';
+    }
+  }); */
 
   /* language Storage  */
 
