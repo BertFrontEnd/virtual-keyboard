@@ -1,10 +1,12 @@
 document.addEventListener('DOMContentLoaded', function () {
   /* Main */
+
   document.body.insertAdjacentHTML('afterbegin', '<main></main>');
 
   const mainContent = document.querySelector('main');
 
   /* Screen */
+
   function initTextArea() {
     mainContent.insertAdjacentHTML(
       'afterbegin',
@@ -13,6 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /* Keyboard */
+
   function initAreaForKeyboard() {
     mainContent.insertAdjacentHTML(
       'beforeend',
@@ -23,8 +26,11 @@ document.addEventListener('DOMContentLoaded', function () {
   function initKeyboard() {
     const keyboard = document.querySelector('.keyboard');
     let key = '';
-    let keys = 52;
+    let keys = 51;
     for (let i = 0; i <= keys; i++) {
+      /*       if (i == 0) {
+        key += '<div class="key-default key-esc"></div>';
+      } */
       key += '<div class="key-default"></div>';
       if (i == 13) {
         key += '<div class="key-default key-backspace"></div>';
@@ -53,19 +59,22 @@ document.addEventListener('DOMContentLoaded', function () {
       if (i == 48) {
         key += '<div class="key-default key-l-ctrl"></div>';
       }
-      if (i == 49) {
+      if (i == 48) {
+        key += '<div class="key-default key-win"></div>';
+      }
+      if (i == 48) {
         key += ' <div class="key-default key-l-alt"></div>';
       }
-      if (i == 49) {
+      if (i == 48) {
         key += '<div class="key-default key-space"></div>';
       }
-      if (i == 49) {
+      if (i == 48) {
         key += '<div class="key-default key-r-alt"></div>';
       }
-      if (i == 49) {
+      if (i == 48) {
         key += '<div class="key-default key-r-ctrl"></div>';
       }
-      if (i == 52) {
+      if (i == 51) {
         key += '<div class="key-default key-r-func"></div>';
       }
     }
@@ -73,13 +82,16 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /* Load Screen & Keyboard */
+
   window.onload = initTextArea();
   window.onload = initAreaForKeyboard();
   window.onload = initKeyboard();
 
   /* Render Function */
-  const keyKeyboardId = [
-    'Blockquote',
+
+  const codeKeyboard = [
+    'Escape',
+    'Backquote',
     'Digit1',
     'Digit2',
     'Digit3',
@@ -106,6 +118,7 @@ document.addEventListener('DOMContentLoaded', function () {
     'KeyP',
     'BracketLeft',
     'BracketRight',
+    'Backslash',
     'Delete',
     'CapsLock',
     'KeyA',
@@ -121,7 +134,6 @@ document.addEventListener('DOMContentLoaded', function () {
     'Quote',
     'Enter',
     'ShiftLeft',
-    'IntlBackslash',
     'KeyZ',
     'KeyX',
     'KeyC',
@@ -134,16 +146,19 @@ document.addEventListener('DOMContentLoaded', function () {
     'Slash',
     'ArrowUp',
     'ShiftRight',
+    'Func',
     'ControlLeft',
     'MetaLeft',
     'AltLeft',
     'Space',
     'AltRight',
-    'en',
+    'ControlRight',
     'ArrowLeft',
     'ArrowDown',
     'ArrowRight',
+    'Func',
   ];
+
   const en = [
     'Esc',
     '`',
@@ -201,7 +216,7 @@ document.addEventListener('DOMContentLoaded', function () {
     '/',
     '↑',
     'Shift',
-    'Fn',
+    'En',
     'Ctrl',
     'Win',
     'Alt',
@@ -211,7 +226,7 @@ document.addEventListener('DOMContentLoaded', function () {
     '←',
     '↓',
     '→',
-    'Fn',
+    'En',
   ];
   const enUp = [
     'Esc',
@@ -270,7 +285,7 @@ document.addEventListener('DOMContentLoaded', function () {
     '?',
     '↑',
     'Shift',
-    'Fn',
+    'En',
     'Ctrl',
     'Win',
     'Alt',
@@ -280,7 +295,7 @@ document.addEventListener('DOMContentLoaded', function () {
     '←',
     '↓',
     '→',
-    'Fn',
+    'En',
   ];
   const ru = [
     'Esc',
@@ -339,7 +354,7 @@ document.addEventListener('DOMContentLoaded', function () {
     '.',
     '↑',
     'Shift',
-    'Fn',
+    'Ru',
     'Ctrl',
     'Win',
     'Alt',
@@ -349,7 +364,7 @@ document.addEventListener('DOMContentLoaded', function () {
     '←',
     '↓',
     '→',
-    'Fn',
+    'Ru',
   ];
   const ruUp = [
     'Esc',
@@ -408,7 +423,7 @@ document.addEventListener('DOMContentLoaded', function () {
     ',',
     '↑',
     'Shift',
-    'Fn',
+    'Ru',
     'Ctrl',
     'Win',
     'Alt',
@@ -418,11 +433,14 @@ document.addEventListener('DOMContentLoaded', function () {
     '←',
     '↓',
     '→',
-    'Fn',
+    'Ru',
   ];
 
   const virtualKeyboardKeys = document.querySelectorAll('.key-default');
   console.log(virtualKeyboardKeys);
+
+  const virtualScreen = document.querySelector('.screen');
+  console.log(virtualScreen);
 
   function renderSymbols(symbol) {
     virtualKeyboardKeys.innerHTML = '';
@@ -436,8 +454,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
   /*   virtualKeyboard.addEventListener('mousedown', (e) => {
     if (
-      e.code === 'ShiftLeft' ||
-      e.code === 'ShiftRight' ||
+      e.code === 'ShiftLeft' || e.code === 'ShiftRight' ||
+      || e.code === 'ShiftRight' ||
       e.target.className === 'key-l-shift' ||
       e.target.className === 'key-r-shift'
     ) {
@@ -445,9 +463,38 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }); */
 
-  /*  ChangeLanguage */
+  /* Keypress Animation All Key */
+
+  /*   document.addEventListener('keydown', (e) => {
+    for (let i = 0; i <= codeKeyboard.length; i++) {
+      if (e.code === codeKeyboard[i]) {
+        for (let j = 0; j <= virtualKeyboardKeys.length; j++)
+          virtualKeyboardKeys[j].classList.add('key-active');
+      }
+    }
+  }); */
+
   document.addEventListener('keydown', (e) => {
-    if (e.code === 'ControlLeft') {
+    for (let i = 0; i <= codeKeyboard.length; i++) {
+      for (let j = 0; j <= virtualKeyboardKeys.length; j++) {
+        if (e.code === codeKeyboard[i]) {
+          console.log('work');
+          let symbol = virtualKeyboardKeys[j].textContent;
+          text += symbol;
+          virtualScreen.textContent = text;
+        }
+      }
+    }
+  });
+
+  /*  Change Language */
+
+  document.addEventListener('keydown', (e) => {
+    const ctrlKeyLeft = document.querySelector('.key-l-ctrl');
+    const ctrlKeyRight = document.querySelector('.key-r-ctrl');
+    if (e.code === 'ControlLeft' || e.code === 'ControlRight') {
+      ctrlKeyLeft.classList.add('key-active');
+      ctrlKeyRight.classList.add('key-active');
       if (langKeyboard === en) {
         langKeyboard = ru;
         console.log(langKeyboard);
@@ -458,51 +505,59 @@ document.addEventListener('DOMContentLoaded', function () {
       renderSymbols(langKeyboard);
       localStorage.setItem('language', JSON.stringify(langKeyboard));
     }
+
+    document.addEventListener('keyup', (e) => {
+      ctrlKeyLeft.classList.remove('key-active');
+      ctrlKeyRight.classList.remove('key-active');
+    });
   });
 
-  /* ShiftUpperCase&LowerCase */
+  /* Shift */
+
   document.addEventListener('keydown', (e) => {
-    const myShiftKey = document.querySelector('.key-l-shift');
-    if (e.code === 'ShiftLeft') {
-      myShiftKey.classList.add('key-active');
+    const shiftKeyLeft = document.querySelector('.key-l-shift');
+    const shiftKeyRight = document.querySelector('.key-r-shift');
+    if (e.code === 'ShiftLeft' || e.code === 'ShiftRight') {
+      shiftKeyLeft.classList.add('key-active');
+      shiftKeyRight.classList.add('key-active');
     }
-    if (e.code === 'ShiftLeft') {
+    if (e.code === 'ShiftLeft' || e.code === 'ShiftRight') {
       if (langKeyboard === enUp) {
         langKeyboard = enUp;
       } else if (langKeyboard === ruUp) {
         langKeyboard = ruUp;
-      }
-    }
-    if (e.code === 'ShiftLeft') {
-      if (langKeyboard === en) {
+      } else if (langKeyboard === en) {
         langKeyboard = enUp;
       } else {
         langKeyboard = ruUp;
       }
       renderSymbols(langKeyboard);
     }
+  });
 
-    document.addEventListener('keyup', (e) => {
-      myShiftKey.classList.remove('key-active');
-      if (e.code === 'ShiftLeft') {
-        if (langKeyboard === enUp) {
-          langKeyboard = en;
-          console.log(langKeyboard);
-        } else if (langKeyboard === ruUp) {
-          langKeyboard = ru;
-          console.log(langKeyboard);
-        }
-        renderSymbols(langKeyboard);
-        localStorage.setItem('language', JSON.stringify(langKeyboard));
+  document.addEventListener('keyup', (e) => {
+    const shiftKeyLeft = document.querySelector('.key-l-shift');
+    const shiftKeyRight = document.querySelector('.key-r-shift');
+    shiftKeyLeft.classList.remove('key-active');
+    shiftKeyRight.classList.remove('key-active');
+    if (e.code === 'ShiftLeft' || e.code === 'ShiftRight') {
+      if (langKeyboard === enUp) {
+        langKeyboard = en;
+        console.log(langKeyboard);
+      } else if (langKeyboard === ruUp) {
+        langKeyboard = ru;
+        console.log(langKeyboard);
       }
-    });
+      renderSymbols(langKeyboard);
+    }
   });
 
   /* CapsLock */
+
   document.addEventListener('keydown', (e) => {
-    const myCapsLockKey = document.querySelector('.key-caps');
+    const capsLockKey = document.querySelector('.key-caps');
     if (e.code === 'CapsLock') {
-      myCapsLockKey.classList.toggle('key-active');
+      capsLockKey.classList.toggle('key-active');
     }
     if (e.code === 'CapsLock') {
       if (langKeyboard === en) {
@@ -515,11 +570,144 @@ document.addEventListener('DOMContentLoaded', function () {
         langKeyboard = ru;
       }
       renderSymbols(langKeyboard);
-      /* localStorage.setItem('language', JSON.stringify(langKeyboard)); */
     }
   });
 
-  /* languageStorage  */
+  /* Print  */
+
+  /* Keys*/
+
+  let text = '';
+
+  document.addEventListener('keydown', (e) => {
+    if (
+      e.code === 'AltLeft' ||
+      e.code === 'AltRight' ||
+      e.code === 'Escape' ||
+      e.code === 'Tab' ||
+      e.code === 'MetaLeft'
+    ) {
+      e.preventDefault();
+    }
+
+    const backspaceKey = document.querySelector('.key-backspace');
+    const deleteKey = document.querySelector('.key-del');
+    const enterKey = document.querySelector('.key-enter');
+    const spaceKey = document.querySelector('.key-space');
+
+    if (e.code === 'Backspace') {
+      backspaceKey.classList.add('key-active');
+      let backspace = virtualScreen.textContent;
+      text = backspace.split('').slice(0, -1).join('');
+      virtualScreen.textContent = text;
+    } else if (e.code === 'Delete') {
+      deleteKey.classList.add('key-active');
+      let del = virtualScreen.textContent;
+      text = del.split('').slice(1).join('');
+      virtualScreen.textContent = text;
+    } else if (e.code === 'Enter') {
+      enterKey.classList.add('key-active');
+      text += '\n';
+      virtualScreen.textContent = text;
+    } else if (e.code === 'Space') {
+      spaceKey.classList.add('key-active');
+      text += ' ';
+      virtualScreen.textContent = text;
+    }
+
+    document.addEventListener('keyup', (e) => {
+      backspaceKey.classList.remove('key-active');
+      enterKey.classList.remove('key-active');
+      deleteKey.classList.remove('key-active');
+      spaceKey.classList.remove('key-active');
+    });
+  });
+
+  /* Mouse */
+
+  virtualKeyboard.addEventListener('mousedown', (e) => {
+    if (e.target.className === 'key-default') {
+      text += e.target.textContent;
+      virtualScreen.textContent = text;
+    } else if (e.target.classList.contains('key-win')) {
+      e.preventDefault();
+    } else if (e.target.classList.contains('key-enter')) {
+      text += '\n';
+      virtualScreen.textContent = text;
+    } else if (e.target.classList.contains('key-space')) {
+      text += ' ';
+      virtualScreen.textContent = text;
+    } else if (e.target.classList.contains('key-backspace')) {
+      let backspace = virtualScreen.textContent;
+      text = backspace.split('').slice(0, -1).join('');
+      virtualScreen.textContent = text;
+    } else if (e.target.classList.contains('key-del')) {
+      let backspace = virtualScreen.textContent;
+      text = backspace.split('').slice(1).join('');
+      virtualScreen.textContent = text;
+    } else if (e.target.classList.contains('key-caps')) {
+      e.target.classList.toggle('key-active');
+      {
+        if (langKeyboard === en) {
+          langKeyboard = enUp;
+        } else if (langKeyboard === enUp) {
+          langKeyboard = en;
+        } else if (langKeyboard === ru) {
+          langKeyboard = ruUp;
+        } else if (langKeyboard === ruUp) {
+          langKeyboard = ru;
+        }
+        renderSymbols(langKeyboard);
+      }
+    } else if (
+      e.target.classList.contains('key-l-ctrl') ||
+      e.target.classList.contains('key-r-ctrl')
+    ) {
+      console.log(e.target);
+      if (langKeyboard === en) {
+        langKeyboard = ru;
+        console.log(langKeyboard);
+      } else {
+        langKeyboard = en;
+        console.log(langKeyboard);
+      }
+      renderSymbols(langKeyboard);
+      localStorage.setItem('language', JSON.stringify(langKeyboard));
+    } else if (
+      e.target.classList.contains('key-l-shift') ||
+      e.target.classList.contains('key-r-shift')
+    ) {
+      if (langKeyboard === enUp) {
+        langKeyboard = enUp;
+      } else if (langKeyboard === ruUp) {
+        langKeyboard = ruUp;
+      } else if (langKeyboard === en) {
+        langKeyboard = enUp;
+      } else {
+        langKeyboard = ruUp;
+      }
+      renderSymbols(langKeyboard);
+    }
+  });
+
+  virtualKeyboard.addEventListener('mouseup', (e) => {
+    if (
+      e.target.classList.contains('key-l-shift') ||
+      e.target.classList.contains('key-r-shift')
+    ) {
+      if (langKeyboard === enUp) {
+        langKeyboard = en;
+        console.log(langKeyboard);
+      } else if (langKeyboard === ruUp) {
+        langKeyboard = ru;
+        console.log(langKeyboard);
+      }
+      renderSymbols(langKeyboard);
+    }
+  });
+
+  /* language Storage  */
+
   let langKeyboard = [];
   if (
     /* localStorage.getItem('language') || */
