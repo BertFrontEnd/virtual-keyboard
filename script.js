@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
   function initTextArea() {
     mainContent.insertAdjacentHTML(
       'afterbegin',
-      '<section id="for-screen"><textarea name="screen" class="screen" cols="150" rows="12" placeholder="A long time ago in a galaxy far far away..."></textarea></section>'
+      '<section id="for-screen"><textarea name="screen" class="screen" cols="100" rows="12"></textarea></section>'
     );
   }
 
@@ -240,76 +240,6 @@ document.addEventListener('DOMContentLoaded', function () {
   window.onload = initKeyboard();
 
   /* Render Function */
-
-  const codeKeyboard = [
-    'Escape',
-    'Backquote',
-    'Digit1',
-    'Digit2',
-    'Digit3',
-    'Digit4',
-    'Digit5',
-    'Digit6',
-    'Digit7',
-    'Digit8',
-    'Digit9',
-    'Digit0',
-    'Minus',
-    'Equal',
-    'Backspace',
-    'Tab',
-    'KeyQ',
-    'KeyW',
-    'KeyE',
-    'KeyR',
-    'KeyT',
-    'KeyY',
-    'KeyU',
-    'KeyI',
-    'KeyO',
-    'KeyP',
-    'BracketLeft',
-    'BracketRight',
-    'Backslash',
-    'Delete',
-    'CapsLock',
-    'KeyA',
-    'KeyS',
-    'KeyD',
-    'KeyF',
-    'KeyG',
-    'KeyH',
-    'KeyJ',
-    'KeyK',
-    'KeyL',
-    'Semicolon',
-    'Quote',
-    'Enter',
-    'ShiftLeft',
-    'KeyZ',
-    'KeyX',
-    'KeyC',
-    'KeyV',
-    'KeyB',
-    'KeyN',
-    'KeyM',
-    'Comma',
-    'Period',
-    'Slash',
-    'ArrowUp',
-    'ShiftRight',
-    'Func',
-    'ControlLeft',
-    'MetaLeft',
-    'AltLeft',
-    'Space',
-    'AltRight',
-    'ControlRight',
-    'ArrowLeft',
-    'ArrowDown',
-    'ArrowRight',
-    'Func',
-  ];
 
   const en = [
     'Esc',
@@ -594,6 +524,8 @@ document.addEventListener('DOMContentLoaded', function () {
   const virtualScreen = document.querySelector('.screen');
   console.log(virtualScreen);
 
+  virtualScreen.setAttribute('disabled', 'disabled');
+
   function renderSymbols(symbol) {
     virtualKeyboardKeys.innerHTML = '';
     for (let i = 0; i < symbol.length; i++) {
@@ -604,72 +536,28 @@ document.addEventListener('DOMContentLoaded', function () {
   const virtualKeyboard = document.querySelector('.keyboard');
   console.log(virtualKeyboard);
 
-  /*   virtualKeyboard.addEventListener('mousedown', (e) => {
-    if (
-      e.code === 'ShiftLeft' || e.code === 'ShiftRight' ||
-      || e.code === 'ShiftRight' ||
-      e.target.className === 'key-l-shift' ||
-      e.target.className === 'key-r-shift'
-    ) {
-      document.querySelector('.key-l-shift').classList.toggle('key-active');
-    }
-  }); */
-
-  /* Keypress Animation All Key */
-
-  /*   document.addEventListener('keydown', (e) => {
-    for (let i = 0; i <= codeKeyboard.length; i++) {
-      if (e.code === codeKeyboard[i]) {
-        for (let j = 0; j <= virtualKeyboardKeys.length; j++)
-          virtualKeyboardKeys[j].classList.add('key-active');
-      }
-    }
-  }); */
-
-  /*   document.addEventListener('keydown', (e) => {
-    codeKeyboard.forEach((elk) =>
-      virtualKeyboardKeys.forEach((elv) => {
-        if (e.code === elk) {
-          console.log('work');
-          elv.classList.add('key-active');
-          let symbol = elv.textContent;
-          text += symbol;
-          virtualScreen.textContent = text;
-
-          document.addEventListener('keyup', (e) => {
-            elv.classList.remove('key-active');
-          });
-        }
-      })
-    );
-  }); */
-
-  /*   document.addEventListener('keydown', (e) => {
-    for (let i = 0; i <= codeKeyboard.length; i++) {
-      for (let j = 0; j <= virtualKeyboardKeys.length; j++) {
-        if (e.code === codeKeyboard[i]) {
-          console.log('work');
-          virtualKeyboardKeys[i].classList.add('key-active');
-          let symbol = virtualKeyboardKeys[i].textContent;
-          text += symbol;
-          virtualScreen.textContent = text;
-
-          document.addEventListener('keyup', (e) => {
-            virtualKeyboardKeys[i].classList.remove('key-active');
-          });
-        }
-      }
-    }
-  }); */
-
   /*  Change Language */
 
   document.addEventListener('keydown', (e) => {
-    const ctrlKeyLeft = document.querySelector('.key-l-ctrl');
+    /*     const ctrlKeyLeft = document.querySelector('.key-l-ctrl');
     const ctrlKeyRight = document.querySelector('.key-r-ctrl');
-    if (e.code === 'ControlLeft' || e.code === 'ControlRight') {
-      ctrlKeyLeft.classList.add('key-active');
+    const altKeyLeft = document.querySelector('.key-l-alt');
+    const altKeyRight = document.querySelector('.key-r-alt'); */
+    /* if (
+      (event.altKey && e.code === 'ControlLeft') ||
+      (e.code === 'ControlRight' && event.altKey)
+    ) { */
+    if (
+      /* (e.code === 'ControlLeft' || e.code === 'ControlRight') */
+
+      e.altKey &&
+      e.ctrlKey /*  ||
+      (e.ctrlKey && e.altKey) */
+    ) {
+      /*       ctrlKeyLeft.classList.add('key-active');
       ctrlKeyRight.classList.add('key-active');
+      altKeyLeft.classList.add('key-active');
+      altKeyRight.classList.add('key-active'); */
       if (langKeyboard === en) {
         langKeyboard = ru;
         console.log(langKeyboard);
@@ -681,10 +569,12 @@ document.addEventListener('DOMContentLoaded', function () {
       localStorage.setItem('language', JSON.stringify(langKeyboard));
     }
 
-    document.addEventListener('keyup', (e) => {
+    /*     document.addEventListener('keyup', (e) => {
       ctrlKeyLeft.classList.remove('key-active');
       ctrlKeyRight.classList.remove('key-active');
-    });
+      altKeyLeft.classList.remove('key-active');
+      altKeyRight.classList.remove('key-active');
+    }); */
   });
 
   /* Shift */
@@ -745,6 +635,7 @@ document.addEventListener('DOMContentLoaded', function () {
         langKeyboard = ru;
       }
       renderSymbols(langKeyboard);
+      /* localStorage.setItem('language', JSON.stringify(langKeyboard)); */
     }
   });
 
@@ -758,6 +649,8 @@ document.addEventListener('DOMContentLoaded', function () {
     if (
       e.code === 'AltLeft' ||
       e.code === 'AltRight' ||
+      e.code === 'ControlLeft' ||
+      e.code === 'ControlRight' ||
       e.code === 'Escape' ||
       e.code === 'Tab' ||
       e.code === 'MetaLeft'
@@ -766,6 +659,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     const backspaceKey = document.querySelector('.key-backspace');
+    const tabKey = document.querySelector('.key-tab');
     const deleteKey = document.querySelector('.key-del');
     const enterKey = document.querySelector('.key-enter');
     const spaceKey = document.querySelector('.key-space');
@@ -774,6 +668,11 @@ document.addEventListener('DOMContentLoaded', function () {
       backspaceKey.classList.add('key-active');
       let backspace = virtualScreen.textContent;
       text = backspace.split('').slice(0, -1).join('');
+      virtualScreen.textContent = text;
+    } else if (e.code === 'Tab') {
+      tabKey.classList.add('key-active');
+      let tab = virtualScreen.textContent;
+      text += '    ';
       virtualScreen.textContent = text;
     } else if (e.code === 'Delete') {
       deleteKey.classList.add('key-active');
@@ -792,6 +691,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.addEventListener('keyup', (e) => {
       backspaceKey.classList.remove('key-active');
+      tabKey.classList.remove('key-active');
       enterKey.classList.remove('key-active');
       deleteKey.classList.remove('key-active');
       spaceKey.classList.remove('key-active');
@@ -799,20 +699,347 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   document.addEventListener('keydown', (e) => {
+    if (e.code === 'Escape') {
+      document.querySelector('.key-esc').classList.add('key-active');
+      /* text += document.querySelector('.key-esc').textContent;
+      virtualScreen.textContent = text; */
+    }
+    if (e.code === 'Backquote') {
+      document.querySelector('.key-backquote').classList.add('key-active');
+      text += document.querySelector('.key-backquote').textContent;
+      virtualScreen.textContent = text;
+    }
+    if (e.code === 'Digit1') {
+      document.querySelector('.key-dig1').classList.add('key-active');
+      text += document.querySelector('.key-dig1').textContent;
+      virtualScreen.textContent = text;
+    }
+    if (e.code === 'Digit2') {
+      document.querySelector('.key-dig2').classList.add('key-active');
+      text += document.querySelector('.key-dig2').textContent;
+      virtualScreen.textContent = text;
+    }
+    if (e.code === 'Digit3') {
+      document.querySelector('.key-dig3').classList.add('key-active');
+      text += document.querySelector('.key-dig3').textContent;
+      virtualScreen.textContent = text;
+    }
+    if (e.code === 'Digit4') {
+      document.querySelector('.key-dig4').classList.add('key-active');
+      text += document.querySelector('.key-dig4').textContent;
+      virtualScreen.textContent = text;
+    }
+    if (e.code === 'Digit5') {
+      document.querySelector('.key-dig5').classList.add('key-active');
+      text += document.querySelector('.key-dig5').textContent;
+      virtualScreen.textContent = text;
+    }
+    if (e.code === 'Digit6') {
+      document.querySelector('.key-dig6').classList.add('key-active');
+      text += document.querySelector('.key-dig6').textContent;
+      virtualScreen.textContent = text;
+    }
+    if (e.code === 'Digit7') {
+      document.querySelector('.key-dig7').classList.add('key-active');
+      text += document.querySelector('.key-dig7').textContent;
+      virtualScreen.textContent = text;
+    }
+    if (e.code === 'Digit8') {
+      document.querySelector('.key-dig8').classList.add('key-active');
+      text += document.querySelector('.key-dig8').textContent;
+      virtualScreen.textContent = text;
+    }
+    if (e.code === 'Digit9') {
+      document.querySelector('.key-dig9').classList.add('key-active');
+      text += document.querySelector('.key-dig9').textContent;
+      virtualScreen.textContent = text;
+    }
+    if (e.code === 'Digit0') {
+      document.querySelector('.key-dig0').classList.add('key-active');
+      text += document.querySelector('.key-dig0').textContent;
+      virtualScreen.textContent = text;
+    }
+    if (e.code === 'Minus') {
+      document.querySelector('.key-minus').classList.add('key-active');
+      text += document.querySelector('.key-minus').textContent;
+      virtualScreen.textContent = text;
+    }
+    if (e.code === 'Equal') {
+      document.querySelector('.key-equal').classList.add('key-active');
+      text += document.querySelector('.key-equal').textContent;
+      virtualScreen.textContent = text;
+    }
+    /*     if (e.code === 'Tab') {
+      document.querySelector('.key-tab').classList.add('key-active');
+      text += document.querySelector('.key-tab').textContent;
+      virtualScreen.textContent = text;
+    } */
+    if (e.code === 'KeyQ') {
+      document.querySelector('.key-q').classList.add('key-active');
+      text += document.querySelector('.key-q').textContent;
+      virtualScreen.textContent = text;
+    }
+    if (e.code === 'KeyW') {
+      document.querySelector('.key-w').classList.add('key-active');
+      text += document.querySelector('.key-w').textContent;
+      virtualScreen.textContent = text;
+    }
+    if (e.code === 'KeyE') {
+      document.querySelector('.key-e').classList.add('key-active');
+      text += document.querySelector('.key-e').textContent;
+      virtualScreen.textContent = text;
+    }
+    if (e.code === 'KeyR') {
+      document.querySelector('.key-r').classList.add('key-active');
+      text += document.querySelector('.key-r').textContent;
+      virtualScreen.textContent = text;
+    }
+    if (e.code === 'KeyT') {
+      document.querySelector('.key-t').classList.add('key-active');
+      text += document.querySelector('.key-t').textContent;
+      virtualScreen.textContent = text;
+    }
+    if (e.code === 'KeyY') {
+      document.querySelector('.key-y').classList.add('key-active');
+      text += document.querySelector('.key-y').textContent;
+      virtualScreen.textContent = text;
+    }
+    if (e.code === 'KeyU') {
+      document.querySelector('.key-u').classList.add('key-active');
+      text += document.querySelector('.key-u').textContent;
+      virtualScreen.textContent = text;
+    }
+    if (e.code === 'KeyI') {
+      document.querySelector('.key-i').classList.add('key-active');
+      text += document.querySelector('.key-i').textContent;
+      virtualScreen.textContent = text;
+    }
+    if (e.code === 'KeyO') {
+      document.querySelector('.key-o').classList.add('key-active');
+      text += document.querySelector('.key-o').textContent;
+      virtualScreen.textContent = text;
+    }
+    if (e.code === 'KeyP') {
+      document.querySelector('.key-p').classList.add('key-active');
+      text += document.querySelector('.key-p').textContent;
+      virtualScreen.textContent = text;
+    }
+    if (e.code === 'BracketLeft') {
+      document.querySelector('.key-b-left').classList.add('key-active');
+      text += document.querySelector('.key-b-left').textContent;
+      virtualScreen.textContent = text;
+    }
+    if (e.code === 'BracketRight') {
+      document.querySelector('.key-b-right').classList.add('key-active');
+      text += document.querySelector('.key-b-right').textContent;
+      virtualScreen.textContent = text;
+    }
+    if (e.code === 'Backslash') {
+      document.querySelector('.key-backslash').classList.add('key-active');
+      text += document.querySelector('.key-backslash').textContent;
+      virtualScreen.textContent = text;
+    }
+    if (e.code === 'KeyA') {
+      document.querySelector('.key-a').classList.add('key-active');
+      text += document.querySelector('.key-a').textContent;
+      virtualScreen.textContent = text;
+    }
+    if (e.code === 'KeyS') {
+      document.querySelector('.key-s').classList.add('key-active');
+      text += document.querySelector('.key-s').textContent;
+      virtualScreen.textContent = text;
+    }
+    if (e.code === 'KeyD') {
+      document.querySelector('.key-d').classList.add('key-active');
+      text += document.querySelector('.key-d').textContent;
+      virtualScreen.textContent = text;
+    }
+    if (e.code === 'KeyF') {
+      document.querySelector('.key-f').classList.add('key-active');
+      text += document.querySelector('.key-f').textContent;
+      virtualScreen.textContent = text;
+    }
+    if (e.code === 'KeyG') {
+      document.querySelector('.key-g').classList.add('key-active');
+      text += document.querySelector('.key-g').textContent;
+      virtualScreen.textContent = text;
+    }
+    if (e.code === 'KeyH') {
+      document.querySelector('.key-h').classList.add('key-active');
+      text += document.querySelector('.key-h').textContent;
+      virtualScreen.textContent = text;
+    }
+    if (e.code === 'KeyJ') {
+      document.querySelector('.key-j').classList.add('key-active');
+      text += document.querySelector('.key-j').textContent;
+      virtualScreen.textContent = text;
+    }
+    if (e.code === 'KeyK') {
+      document.querySelector('.key-k').classList.add('key-active');
+      text += document.querySelector('.key-k').textContent;
+      virtualScreen.textContent = text;
+    }
+    if (e.code === 'KeyL') {
+      document.querySelector('.key-l').classList.add('key-active');
+      text += document.querySelector('.key-l').textContent;
+      virtualScreen.textContent = text;
+    }
+    if (e.code === 'Semicolon') {
+      document.querySelector('.key-semicolon').classList.add('key-active');
+      text += document.querySelector('.key-semicolon').textContent;
+      virtualScreen.textContent = text;
+    }
+    if (e.code === 'Quote') {
+      document.querySelector('.key-quote').classList.add('key-active');
+      text += document.querySelector('.key-quote').textContent;
+      virtualScreen.textContent = text;
+    }
+    if (e.code === 'KeyZ') {
+      document.querySelector('.key-z').classList.add('key-active');
+      text += document.querySelector('.key-z').textContent;
+      virtualScreen.textContent = text;
+    }
+    if (e.code === 'KeyX') {
+      document.querySelector('.key-x').classList.add('key-active');
+      text += document.querySelector('.key-x').textContent;
+      virtualScreen.textContent = text;
+    }
+    if (e.code === 'KeyC') {
+      document.querySelector('.key-c').classList.add('key-active');
+      text += document.querySelector('.key-c').textContent;
+      virtualScreen.textContent = text;
+    }
+    if (e.code === 'KeyV') {
+      document.querySelector('.key-v').classList.add('key-active');
+      text += document.querySelector('.key-v').textContent;
+      virtualScreen.textContent = text;
+    }
+    if (e.code === 'KeyB') {
+      document.querySelector('.key-b').classList.add('key-active');
+      text += document.querySelector('.key-b').textContent;
+      virtualScreen.textContent = text;
+    }
+    if (e.code === 'KeyN') {
+      document.querySelector('.key-n').classList.add('key-active');
+      text += document.querySelector('.key-n').textContent;
+      virtualScreen.textContent = text;
+    }
+    if (e.code === 'KeyM') {
+      document.querySelector('.key-m').classList.add('key-active');
+      text += document.querySelector('.key-m').textContent;
+      virtualScreen.textContent = text;
+    }
+    if (e.code === 'Comma') {
+      document.querySelector('.key-comma').classList.add('key-active');
+      text += document.querySelector('.key-comma').textContent;
+      virtualScreen.textContent = text;
+    }
+    if (e.code === 'Period') {
+      document.querySelector('.key-period').classList.add('key-active');
+      text += document.querySelector('.key-period').textContent;
+      virtualScreen.textContent = text;
+    }
+    if (e.code === 'Slash') {
+      document.querySelector('.key-slash').classList.add('key-active');
+      text += document.querySelector('.key-slash').textContent;
+      virtualScreen.textContent = text;
+    }
+    if (e.code === 'ArrowUp') {
+      document.querySelector('.key-arrow-up').classList.add('key-active');
+      text += document.querySelector('.key-arrow-up').textContent;
+      virtualScreen.textContent = text;
+    }
+    if (e.code === 'ControlLeft') {
+      document.querySelector('.key-l-ctrl').classList.add('key-active');
+    }
+    if (e.code === 'MetaLeft') {
+      e.preventDefault();
+      document.querySelector('.key-win').classList.add('key-active');
+    }
     if (e.code === 'AltLeft') {
       document.querySelector('.key-l-alt').classList.add('key-active');
-      text += document.querySelector('.key-l-alt').textContent;
-      virtualScreen.textContent = text;
     }
     if (e.code === 'AltRight') {
       document.querySelector('.key-r-alt').classList.add('key-active');
-      text += document.querySelector('.key-r-alt').textContent;
+    }
+    if (e.code === 'ControlRight') {
+      document.querySelector('.key-r-ctrl').classList.add('key-active');
+    }
+    if (e.code === 'ArrowLeft') {
+      document.querySelector('.key-arrow-l').classList.add('key-active');
+      text += document.querySelector('.key-arrow-l').textContent;
+      virtualScreen.textContent = text;
+    }
+    if (e.code === 'ArrowDown') {
+      document.querySelector('.key-arrow-d').classList.add('key-active');
+      text += document.querySelector('.key-arrow-d').textContent;
+      virtualScreen.textContent = text;
+    }
+    if (e.code === 'ArrowRight') {
+      document.querySelector('.key-arrow-r').classList.add('key-active');
+      text += document.querySelector('.key-arrow-r').textContent;
       virtualScreen.textContent = text;
     }
 
     document.addEventListener('keyup', (e) => {
+      document.querySelector('.key-esc').classList.remove('key-active');
+      document.querySelector('.key-backquote').classList.remove('key-active');
+      document.querySelector('.key-dig1').classList.remove('key-active');
+      document.querySelector('.key-dig2').classList.remove('key-active');
+      document.querySelector('.key-dig3').classList.remove('key-active');
+      document.querySelector('.key-dig4').classList.remove('key-active');
+      document.querySelector('.key-dig5').classList.remove('key-active');
+      document.querySelector('.key-dig6').classList.remove('key-active');
+      document.querySelector('.key-dig7').classList.remove('key-active');
+      document.querySelector('.key-dig8').classList.remove('key-active');
+      document.querySelector('.key-dig9').classList.remove('key-active');
+      document.querySelector('.key-dig0').classList.remove('key-active');
+      document.querySelector('.key-minus').classList.remove('key-active');
+      document.querySelector('.key-equal').classList.remove('key-active');
+      /* document.querySelector('.key-tab').classList.remove('key-active'); */
+      document.querySelector('.key-q').classList.remove('key-active');
+      document.querySelector('.key-w').classList.remove('key-active');
+      document.querySelector('.key-e').classList.remove('key-active');
+      document.querySelector('.key-r').classList.remove('key-active');
+      document.querySelector('.key-t').classList.remove('key-active');
+      document.querySelector('.key-y').classList.remove('key-active');
+      document.querySelector('.key-u').classList.remove('key-active');
+      document.querySelector('.key-i').classList.remove('key-active');
+      document.querySelector('.key-o').classList.remove('key-active');
+      document.querySelector('.key-p').classList.remove('key-active');
+      document.querySelector('.key-b-right').classList.remove('key-active');
+      document.querySelector('.key-b-left').classList.remove('key-active');
+      document.querySelector('.key-backslash').classList.remove('key-active');
+      document.querySelector('.key-a').classList.remove('key-active');
+      document.querySelector('.key-s').classList.remove('key-active');
+      document.querySelector('.key-d').classList.remove('key-active');
+      document.querySelector('.key-f').classList.remove('key-active');
+      document.querySelector('.key-g').classList.remove('key-active');
+      document.querySelector('.key-h').classList.remove('key-active');
+      document.querySelector('.key-j').classList.remove('key-active');
+      document.querySelector('.key-k').classList.remove('key-active');
+      document.querySelector('.key-l').classList.remove('key-active');
+      document.querySelector('.key-semicolon').classList.remove('key-active');
+      document.querySelector('.key-quote').classList.remove('key-active');
+      document.querySelector('.key-z').classList.remove('key-active');
+      document.querySelector('.key-x').classList.remove('key-active');
+      document.querySelector('.key-c').classList.remove('key-active');
+      document.querySelector('.key-v').classList.remove('key-active');
+      document.querySelector('.key-b').classList.remove('key-active');
+      document.querySelector('.key-n').classList.remove('key-active');
+      document.querySelector('.key-m').classList.remove('key-active');
+      document.querySelector('.key-comma').classList.remove('key-active');
+      document.querySelector('.key-period').classList.remove('key-active');
+      document.querySelector('.key-slash').classList.remove('key-active');
+      document.querySelector('.key-arrow-up').classList.remove('key-active');
+      document.querySelector('.key-l-ctrl').classList.remove('key-active');
+      document.querySelector('.key-win').classList.remove('key-active');
       document.querySelector('.key-l-alt').classList.remove('key-active');
       document.querySelector('.key-r-alt').classList.remove('key-active');
+      document.querySelector('.key-r-ctrl').classList.remove('key-active');
+      document.querySelector('.key-arrow-l').classList.remove('key-active');
+      document.querySelector('.key-arrow-d').classList.remove('key-active');
+      document.querySelector('.key-arrow-r').classList.remove('key-active');
     });
   });
 
@@ -821,7 +1048,9 @@ document.addEventListener('DOMContentLoaded', function () {
   virtualKeyboard.addEventListener('mousedown', (e) => {
     if (
       e.target.classList.contains('key-default') &&
+      !e.target.classList.contains('key-esc') &&
       !e.target.classList.contains('key-backspace') &&
+      !e.target.classList.contains('key-tab') &&
       !e.target.classList.contains('key-del') &&
       !e.target.classList.contains('key-caps') &&
       !e.target.classList.contains('key-enter') &&
@@ -829,7 +1058,10 @@ document.addEventListener('DOMContentLoaded', function () {
       !e.target.classList.contains('key-r-shift') &&
       !e.target.classList.contains('key-func') &&
       !e.target.classList.contains('key-l-ctrl') &&
+      !e.target.classList.contains('key-win') &&
+      !e.target.classList.contains('key-l-alt') &&
       !e.target.classList.contains('key-space') &&
+      !e.target.classList.contains('key-r-alt') &&
       !e.target.classList.contains('key-r-ctrl') &&
       !e.target.classList.contains('key-r-func')
     ) {
@@ -845,6 +1077,9 @@ document.addEventListener('DOMContentLoaded', function () {
       let backspace = virtualScreen.textContent;
       text = backspace.split('').slice(0, -1).join('');
       virtualScreen.textContent = text;
+    } else if (e.target.classList.contains('key-tab')) {
+      let tab = virtualScreen.textContent;
+      text += '    ';
     } else if (e.target.classList.contains('key-del')) {
       let backspace = virtualScreen.textContent;
       text = backspace.split('').slice(1).join('');
@@ -910,14 +1145,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  /*   const keyEsc = document.querySelector('.key-default');
-  console.log(keyEsc);
-  keyEsc.addEventListener('mousedown', (e) => {
-    if (e.target === keyEsc) {
-      virtualScreen.textContent = '';
-    }
-  }); */
-
   /* language Storage  */
 
   let langKeyboard = [];
@@ -930,7 +1157,6 @@ document.addEventListener('DOMContentLoaded', function () {
   } else {
     langKeyboard = JSON.parse(localStorage.getItem('language'));
   }
-  /* localStorage.setItem('language', lang); */
 
   window.onload = renderSymbols(langKeyboard);
 });
