@@ -182,19 +182,46 @@ main #for-keyboard .keyboard .key-r-func {
   width: 72px;
 }
 
-/* .load-screen {
-  animation-name: load-screen;
+.load-screen {
+  -webkit-animation: load 1.5s ease-in-out;
+          animation: load 1.5s ease-in-out;
 }
 
-@keyframes load-screen {
+.load-keyboard {
+  -webkit-animation: load 1.5s ease-in-out;
+          animation: load 1.5s ease-in-out;
+}
+
+@-webkit-keyframes load {
   0% {
-    transform: translateY(-100px);
+    -webkit-transform: scale(0);
+            transform: scale(0);
+    opacity: 0;
   }
   50% {
-    transform: translateY(30px);
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
   }
   100% {
-    transform: translateY(0px);
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1;
   }
-} */
-/*# sourceMappingURL=style.css.map */
+}
+
+@keyframes load {
+  0% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1;
+  }
+}

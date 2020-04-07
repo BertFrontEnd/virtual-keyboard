@@ -1,4 +1,5 @@
 node_modules
+assets
 
 style.scss
-style.css.map
+style.map
