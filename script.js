@@ -539,25 +539,7 @@ document.addEventListener('DOMContentLoaded', function () {
   /*  Change Language */
 
   document.addEventListener('keydown', (e) => {
-    /*     const ctrlKeyLeft = document.querySelector('.key-l-ctrl');
-    const ctrlKeyRight = document.querySelector('.key-r-ctrl');
-    const altKeyLeft = document.querySelector('.key-l-alt');
-    const altKeyRight = document.querySelector('.key-r-alt'); */
-    /* if (
-      (event.altKey && e.code === 'ControlLeft') ||
-      (e.code === 'ControlRight' && event.altKey)
-    ) { */
-    if (
-      /* (e.code === 'ControlLeft' || e.code === 'ControlRight') */
-
-      e.altKey &&
-      e.ctrlKey /*  ||
-      (e.ctrlKey && e.altKey) */
-    ) {
-      /*       ctrlKeyLeft.classList.add('key-active');
-      ctrlKeyRight.classList.add('key-active');
-      altKeyLeft.classList.add('key-active');
-      altKeyRight.classList.add('key-active'); */
+    if (e.code === 'AltLeft' && e.ctrlKey) {
       if (langKeyboard === en) {
         langKeyboard = ru;
         console.log(langKeyboard);
@@ -568,13 +550,6 @@ document.addEventListener('DOMContentLoaded', function () {
       renderSymbols(langKeyboard);
       localStorage.setItem('language', JSON.stringify(langKeyboard));
     }
-
-    /*     document.addEventListener('keyup', (e) => {
-      ctrlKeyLeft.classList.remove('key-active');
-      ctrlKeyRight.classList.remove('key-active');
-      altKeyLeft.classList.remove('key-active');
-      altKeyRight.classList.remove('key-active');
-    }); */
   });
 
   /* Shift */
@@ -701,8 +676,6 @@ document.addEventListener('DOMContentLoaded', function () {
   document.addEventListener('keydown', (e) => {
     if (e.code === 'Escape') {
       document.querySelector('.key-esc').classList.add('key-active');
-      /* text += document.querySelector('.key-esc').textContent;
-      virtualScreen.textContent = text; */
     }
     if (e.code === 'Backquote') {
       document.querySelector('.key-backquote').classList.add('key-active');
@@ -769,11 +742,6 @@ document.addEventListener('DOMContentLoaded', function () {
       text += document.querySelector('.key-equal').textContent;
       virtualScreen.textContent = text;
     }
-    /*     if (e.code === 'Tab') {
-      document.querySelector('.key-tab').classList.add('key-active');
-      text += document.querySelector('.key-tab').textContent;
-      virtualScreen.textContent = text;
-    } */
     if (e.code === 'KeyQ') {
       document.querySelector('.key-q').classList.add('key-active');
       text += document.querySelector('.key-q').textContent;
@@ -996,7 +964,6 @@ document.addEventListener('DOMContentLoaded', function () {
       document.querySelector('.key-dig0').classList.remove('key-active');
       document.querySelector('.key-minus').classList.remove('key-active');
       document.querySelector('.key-equal').classList.remove('key-active');
-      /* document.querySelector('.key-tab').classList.remove('key-active'); */
       document.querySelector('.key-q').classList.remove('key-active');
       document.querySelector('.key-w').classList.remove('key-active');
       document.querySelector('.key-e').classList.remove('key-active');
@@ -1149,7 +1116,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
   let langKeyboard = [];
   if (
-    /* localStorage.getItem('language') || */
     localStorage.getItem('language') == null ||
     localStorage.getItem('language') == undefined
   ) {
